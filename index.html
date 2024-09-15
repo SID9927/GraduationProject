@@ -18,6 +18,9 @@
         </div>
         <nav>
             <ul>
+                <li>
+                    <button id="searchBtn"><i class="fa-solid fa-search"></i></button>
+                </li>
                 <li><a href="#">Home</a></li>
                 <li><a href="#sportsNews">Sports</a></li>
                 <li><a href="#businessNews">Business</a></li>
@@ -125,8 +128,29 @@
     </div>
 
 
-
-
+    <div id="searchPopup" class="search-popup">
+        <div class="search-content">
+            <input type="text" id="searchInput" placeholder="Enter your search...">
+            <button id="performSearch">Search</button>
+        </div>
+    </div>
+    
+    <div id="searchResults" class="page3" style="display: none;">
+        <div class="news">
+            <div class="title">
+                <h2>Search Results</h2>
+            </div>
+            <div class="newsBox" id="searchResultsBox">
+                <!-- Search results will be populated here -->
+            </div>
+            <div class="pagination">
+                <button id="prevPage" class="page-button">Previous</button>
+                <span id="currentPage"></span>
+                <button id="nextPage" class="page-button">Next</button>
+            </div>
+        </div>
+        <button id="backToHome" class="back-button">Back to Home</button>
+    </div>
 
     <script src="./index.js"></script>
 </body>

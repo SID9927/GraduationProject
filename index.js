@@ -10,6 +10,18 @@ let header = document.querySelector('.header')
 let toggleMenu = document.querySelector('.bar')
 let menu = document.querySelector('nav ul')
 
+const searchBtn = document.querySelector('#searchBtn');
+const searchPopup = document.querySelector('#searchPopup');
+const searchInput = document.querySelector('#searchInput');
+const performSearch = document.querySelector('#performSearch');
+const searchResults = document.querySelector('#searchResults');
+const searchResultsBox = document.querySelector('#searchResultsBox');
+const backToHome = document.querySelector('#backToHome');
+
+let currentPage = 1;
+let totalResults = 0;
+let currentQuery = '';
+
 const toggle = (e)=>{
     toggleMenu.classList.toggle('active')
     menu.classList.toggle('activeMenu')
@@ -34,10 +46,11 @@ window.addEventListener('scroll',()=>{
 
 // fetching news data from a website providing api
 
-const apiKey = "e1751b32faba43bc96dfd88259750ce4"
+const apiKey = "1fddc8c9987a48b683e9943b3f28a7bc"
+
 
 const fetchData = async (category,pageSize)=>{
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&pageSize=${pageSize}&apiKey=${apiKey}`
+    const url = `https://newsapi.org/v2/top-headlines?category=${category}&pageSize=${pageSize}&apiKey=${apiKey}`
     const data = await fetch(url)
     console.log(data);
     const response = await data.json()
@@ -157,3 +170,81 @@ const add_techNews = (data)=>{
     techNews.innerHTML = html
 }
 fetchData('technology',5).then(add_techNews)
+
+//  these event listeners after the existing ones
+searchBtn.addEventListener('click', () => {
+    searchPopup.style.display = 'block';
+});
+
+performSearch.addEventListener('click', () => {
+    const query = searchInput.value;
+    if (query) {
+        currentPage = 1;
+        searchNews(query);
+    }
+});
+
+document.getElementById('prevPage').addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        searchNews(currentQuery, currentPage);
+    }
+});
+
+document.getElementById('nextPage').addEventListener('click', () => {
+    currentPage++;
+    searchNews(currentQuery, currentPage);
+});
+
+backToHome.addEventListener('click', () => {
+    searchResults.style.display = 'none';
+    document.querySelector('.topHeadlines').style.display = 'grid';
+    document.querySelector('.page2').style.display = 'block';
+    document.querySelector('.footer').style.display = 'block'; // Show footer
+
+});
+
+// this function to perform the search
+const searchNews = async (query, page = 1) => {
+    const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}&pageSize=20&page=${page}`;
+    const data = await fetch(url);
+    const response = await data.json();
+    totalResults = response.totalResults;
+    currentQuery = query;
+    displaySearchResults(response.articles);
+    updatePagination();
+};
+
+//  this function to update pagination
+const updatePagination = () => {
+    const totalPages = Math.ceil(totalResults / 20);
+    document.getElementById('currentPage').textContent = `Page ${currentPage} of ${totalPages}`;
+    document.getElementById('prevPage').disabled = currentPage === 1;
+    document.getElementById('nextPage').disabled = currentPage === totalPages;
+};
+
+//  this function to display search results
+const displaySearchResults = (articles) => {
+    let html = '';
+    articles.forEach((article) => {
+        const title = article.title.length < 100 ? article.title : article.title.slice(0, 100) + "...";
+        html += `
+            <div class="newsCard">
+                <div class="img">
+                    <img src=${article.urlToImage || 'placeholder-image-url.jpg'} alt="image">
+                </div>
+                <div class="text">
+                    <div class="title">
+                        <a href=${article.url} target="_blank"><p>${title}</p></a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    searchResultsBox.innerHTML = html;
+    searchPopup.style.display = 'none';
+    document.querySelector('.topHeadlines').style.display = 'none';
+    document.querySelector('.page2').style.display = 'none';
+    document.querySelector('.footer').style.display = 'none'; // Hide footer
+    searchResults.style.display = 'block';
+};

@@ -513,3 +513,179 @@ nav ul li a{
     }
     
 }
+
+.page3 {
+    width: 100%;
+    background-color: #16161d;
+    min-height: 100vh;
+    padding: 100px 50px 50px;
+}
+
+.page3 .news > .title h2 {
+    font-size: 40px;
+    cursor: pointer;
+    display: inline;
+}
+
+.page3 .news .newsBox {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page3 .news .newsBox .newsCard {
+    width: calc(100% / 5 - 20px);
+    margin: 10px;
+}
+
+.page3 .news .newsBox .newsCard .img {
+    width: 100%;
+    height: 150px;
+    background-color: #a04;
+    border-radius: 5px;
+}
+
+.page3 .news .newsBox .newsCard .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.page3 .news .newsBox .newsCard .text {
+    padding: 10px;
+}
+
+.page3 .news .newsBox .newsCard .text .title a {
+    text-decoration: none;
+}
+
+.page3 .news .newsBox .newsCard .text .title a p {
+    font-size: 15px;
+    color: #fff;
+    display: inline;
+    cursor: pointer;
+}
+
+.page3 .news .newsBox .newsCard .title a p:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .page3 .news .newsBox .newsCard .img {
+        height: 120px;
+    }
+    .page3 .news .newsBox .newsCard .text {
+        padding: 5px;
+    }
+    .page3 .news .newsBox .newsCard .text .title a p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page3 .news .newsBox .newsCard {
+        width: calc(100% / 3 - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .page3 .news .newsBox .newsCard {
+        width: calc(100% / 2 - 20px);
+    }
+}
+
+@media (max-width: 425px) {
+    .page3 .news .newsBox .newsCard {
+        width: 100%;
+        display: grid;
+    }
+    .page3 .news > .title h2 {
+        font-size: 30px;
+    }
+    .page3 .news .newsBox .newsCard .img {
+        height: 100%;
+        min-height: 150px;
+    }
+    .page3 .news .newsBox .newsCard .text .title a p {
+        font-size: 16px;
+    }
+}
+
+
+#searchBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.search-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.search-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #16161d;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#performSearch {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0b0b11;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0b0b11;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+/* Add these styles at the end of the file */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.page-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0b0b11;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#currentPage {
+    font-size: 16px;
+    color: white;
+}
