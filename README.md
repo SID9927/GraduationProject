@@ -8,6 +8,7 @@ This project is a responsive news website that fetches and displays news article
 - Category-specific news sections (Sports, Business, Technology)
 - Search functionality
 - Responsive design for various screen sizes
+- Pagination for search results and category sections
 
 ## Technologies Used
 
@@ -15,6 +16,7 @@ This project is a responsive news website that fetches and displays news article
 - CSS3
 - JavaScript (ES6+)
 - NewsAPI
+- Font Awesome for icons
 
 ## Setup
 
@@ -25,13 +27,26 @@ This project is a responsive news website that fetches and displays news article
 
 3. Open `index.html` in your browser to view the website.
 
-## API Key
+## API Usage
 
-This project uses the NewsAPI. You'll need to sign up for a free API key at [https://newsapi.org](https://newsapi.org) and replace the `apiKey` variable in `index.js` with your own key.
+This project uses a proxy server to fetch news data. The API base URL is set to:
+
+```javascript
+const API_BASE_URL = 'https://news-proxy-server.netlify.app/api';
+```
+
+## Project Structure
+
+* index.html: Main HTML file containing the structure of the website
+* style.css: CSS file for styling the website
+* index.js: JavaScript file containing the logic for fetching and displaying news data
 
 ## Contributing
-
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is open source and available under the MIT License.
+
+
+This README provides a comprehensive overview of your News Website project, including its features, technologies used, setup instructions, and information about the API usage. It also mentions the project structure and invites contributions. You can customize this README further based on any additional information you'd like to include or any specific instructions for your project.
+
