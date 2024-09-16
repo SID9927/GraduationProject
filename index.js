@@ -48,6 +48,8 @@ window.addEventListener('scroll',()=>{
     }
 })
 
+const API_BASE_URL = 'https://news-proxy-server.netlify.app/api';
+
 /**
  * Fetches news data from the NewsAPI.org API.
  *
@@ -62,7 +64,7 @@ const fetchData = async (category, pageSize, page = 1) => {
     const response = await data.json();
     return response;
 }
-const apiKey = "1fddc8c9987a48b683e9943b3f28a7bc"
+// const apiKey = "1fddc8c9987a48b683e9943b3f28a7bc"
 
 
 /**
