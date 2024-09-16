@@ -59,11 +59,12 @@ const API_BASE_URL = 'https://news-proxy-server.netlify.app/api';
  * @returns {Promise<object>} - The response data from the NewsAPI.org API.
  */
 const fetchData = async (category, pageSize, page = 1) => {
-    const url = `https://newsapi.org/v2/top-headlines?category=${category}&pageSize=${pageSize}&page=${page}&apiKey=${apiKey}`;
+    const url = `${API_BASE_URL}/news?category=${category}&pageSize=${pageSize}&page=${page}`;
     const data = await fetch(url);
     const response = await data.json();
     return response;
 }
+
 // const apiKey = "1fddc8c9987a48b683e9943b3f28a7bc"
 
 
@@ -299,7 +300,7 @@ backToHome.addEventListener('click', () => {
  * @returns {Promise<void>} - A Promise that resolves when the search results have been displayed.
  */
 const searchNews = async (query, page = 1) => {
-    const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}&pageSize=20&page=${page}`;
+    const url = `${API_BASE_URL}/search?q=${query}&pageSize=20&page=${page}`;
     const data = await fetch(url);
     const response = await data.json();
     totalResults = response.totalResults;
@@ -307,6 +308,7 @@ const searchNews = async (query, page = 1) => {
     displaySearchResults(response.articles);
     updatePagination();
 };
+
 
 /**
  * Updates the pagination controls based on the current page and total number of results.
