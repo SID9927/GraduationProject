@@ -47,6 +47,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 This project is open source and available under the MIT License.
 
-
-This README provides a comprehensive overview of your News Website project, including its features, technologies used, setup instructions, and information about the API usage. It also mentions the project structure and invites contributions. You can customize this README further based on any additional information you'd like to include or any specific instructions for your project.
-
